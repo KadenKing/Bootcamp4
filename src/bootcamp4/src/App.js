@@ -4,6 +4,7 @@ import ViewBuilding from './components/ViewBuilding';
 import BuildingList from './components/BuildingList';
 import Credit from './components/Credit';
 import AddBuilding from './components/AddBuilding';
+import Table from 'react-bootstrap/Table'
 
 
 
@@ -50,33 +51,33 @@ class App extends React.Component {
   }
 
   render() {
-    
+
     return (
       <div className="bg">
-        <div className="row">
-          <h1>UF Directory App</h1>
-        </div>
+        <h1>UF Directory App</h1>
 
-        <Search onChange={this.filterUpdate}/>
+        <Search onChange={this.filterUpdate} />
         <main>
           <div className="row">
             <div className="column1">
-            <AddBuilding onAdd={this.addBuilding}></AddBuilding>
+              <AddBuilding onAdd={this.addBuilding}></AddBuilding>
 
               <div className="tableWrapper">
-                <table className="table table-striped table-hover">
-                  <tr>
-                    <td>
-                      <b>Code Building</b>
-                    </td>
-                  </tr>
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Building</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
                   <BuildingList
                     data={this.state.buildings}
                     filter={this.state.filterText}
                     deleteBuilding={this.deleteBuilding}
                     onSelectBuilding={this.selectedUpdate}
                   />
-                </table>
+                </Table>
               </div>
             </div>
             <div className="column2">

@@ -8,6 +8,8 @@ const initState = {
     name: "",
     code: "",
     address: "",
+    latitude: "",
+    longitude: "",
 }
 
 const style = {
@@ -27,7 +29,14 @@ export default class AddBuilding extends Component {
     }
 
     save = () => {
-        this.props.onAdd(this.state)
+        const send = {
+            ...this.state,
+            coordinates: {
+                latitude: this.state.latitude,
+                longitude: this.state.longitude,
+            }
+        }
+        this.props.onAdd(send)
         this.setState(initState)
     }
 
@@ -48,9 +57,19 @@ export default class AddBuilding extends Component {
                     </Form.Group>
 
                     <Form.Group>
+                    <Form.Control size="sm" type="text" placeholder="latitude" id="latitude" value={this.state.latitude} onChange={this.update}></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group>
+                    <Form.Control size="sm" type="text" placeholder="longitude" id="longitude" value={this.state.longitude} onChange={this.update}></Form.Control>
+                    </Form.Group>
+
+                    <Form.Group>
                     <Button onClick={this.save}><FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> Add</Button>
 
                     </Form.Group>
+
+                    
 
 
                 </Form>

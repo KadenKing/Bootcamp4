@@ -6,7 +6,7 @@ class BuilingList extends React.Component {
 		//console.log('This is my directory file', this.props.data);
 		const { data } = this.props;
 
-		const filteredData = this.props.filter !== "" ? data.filter(directory => directory.name.toLowerCase().startsWith(this.props.filter.toLowerCase())) : data
+		const filteredData = this.props.filter !== "" ? data.filter(directory => directory.name.toLowerCase().includes(this.props.filter.toLowerCase())) : data
 
 		const buildingList = filteredData.map(directory => {
 			return (
@@ -18,7 +18,7 @@ class BuilingList extends React.Component {
 			);
 		});
 
-		return <div>{buildingList}</div>;
+		return <tbody>{buildingList}</tbody>;
 	}
 }
 export default BuilingList;

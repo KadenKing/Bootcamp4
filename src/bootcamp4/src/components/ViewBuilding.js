@@ -6,9 +6,6 @@ class ViewBuilding extends React.Component {
 		const sb = this.props.data.find(item => item.id === this.props.selectedBuilding)
 		return (
 			<div>
-
-
-				<p>
 					{this.props.selectedBuildin === 0 || !sb
 						?
 
@@ -19,7 +16,7 @@ class ViewBuilding extends React.Component {
 								<Card.Title>{sb.name}</Card.Title>
 								<Card.Subtitle className="mb-2 text-muted">{sb.code}</Card.Subtitle>
 								<Card.Text>
-									Address: {sb.address}
+									Address: {sb.address ? sb.address : "Unknown"}
     							</Card.Text>
 								<Card.Text>
 									Lat: {sb.coordinates ? sb.coordinates.latitude : "Unknown"}
@@ -30,7 +27,6 @@ class ViewBuilding extends React.Component {
 							</Card.Body>
 						</Card>
 					}
-				</p>
 			</div>
 		);
 	}
